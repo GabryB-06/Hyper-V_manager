@@ -28,7 +28,7 @@ def main():
             #output = subprocess.run(['runas', '/user:Administrator', "bcdedit /set hypervisorlaunchtype off"], capture_output=True, text=True)
             #print(output)
             #os.system("bcdedit /set hypervisorlaunchtype off")
-            print()
+            #print()
         elif (scelta == 2):
             print()
             #print("output seconda scelta")
@@ -36,15 +36,15 @@ def main():
             print(output.stdout)
             #exec('bcdedit /set hypervisorlaunchtype on')
             #os.system("bcdedit /set hypervisorlaunchtype auto")
-            print()
+            #print()
         elif (scelta == 3):
-            print()
+            #print()
             #print("output terza scelta")
             output = subprocess.run("bcdedit /enum {current}", capture_output=True, text=True)
             print(output.stdout)
             #exec('bcdedit /enum {current}')
             #os.system("bcdedit /enum {current}")
-            print()
+            #print()
         elif (scelta == 4):
             exit()
         else:

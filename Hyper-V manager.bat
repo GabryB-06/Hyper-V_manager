@@ -1,3 +1,4 @@
+:: Script leggermente abbandonato in favore dello script in Python
 @ECHO OFF
 
 :: Controllo permessi

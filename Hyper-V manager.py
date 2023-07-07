@@ -1,3 +1,5 @@
+# TODO: troncare l'output di "bcdedit /enum {current}" lasciando solo la stringa "hypervisorlaunchtype" (ultima stringa) con valori "auto" e "off"
+
 #import os
 import subprocess
 #import win32com.shell.shell as shell

@@ -24,6 +24,20 @@ def main():
         elif (scelta == 3):
             output = subprocess.run("bcdedit /enum {current}", capture_output=True, text=True) # Stato attuale
             print(output.stdout)
+
+#            if "hypervisorlaunchtype    Auto" in output.stdout:
+#                print()
+#                print("Hypervisor attivo")
+#                print()
+#            elif "hypervisorlaunchtype    off" in output.stdout:
+#                print()
+#                print("Hypervisor non attivo")
+#                print()
+#            else:
+#                print()
+#                print("Stato attuale:")
+#                print(output.stdout)
+
         elif (scelta == 4):
             exit()
         else:

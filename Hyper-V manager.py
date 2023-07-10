@@ -1,5 +1,3 @@
-# TODO: troncare l'output di "bcdedit /enum {current}" lasciando solo la stringa "hypervisorlaunchtype" (ultima stringa) con valori "auto" e "off"
-
 import subprocess
 from pyuac import main_requires_admin
 
@@ -15,28 +13,32 @@ def main():
             print()
             output = subprocess.run("bcdedit /set hypervisorlaunchtype off", capture_output=True, text=True) # Attivazione Hyper-V
             print(output.stdout)
-            riavvio()
+            #riavvio()
         elif (scelta == 2):
             print()
             output = subprocess.run("bcdedit /set hypervisorlaunchtype auto", capture_output=True, text=True) # Disattivazione Hyper-V
             print(output.stdout)
-            riavvio()
+            #riavvio()
         elif (scelta == 3):
             output = subprocess.run("bcdedit /enum {current}", capture_output=True, text=True) # Stato attuale
-            print(output.stdout)
+            #print(output.stdout)
 
-#            if "hypervisorlaunchtype    Auto" in output.stdout:
-#                print()
-#                print("Hypervisor attivo")
-#                print()
-#            elif "hypervisorlaunchtype    off" in output.stdout:
-#                print()
-#                print("Hypervisor non attivo")
-#                print()
-#            else:
-#                print()
-#                print("Stato attuale:")
-#                print(output.stdout)
+            if "hypervisorlaunchtype    Auto" in output.stdout:
+                print()
+                #print("hypervisorlaunchtype    Auto")
+                #print("-------------------")
+                print("Hyper-V attivo")
+                print()
+            elif "hypervisorlaunchtype    Off" in output.stdout:
+                print()
+                #print("hypervisorlaunchtype    Off")
+                #print("-------------------")
+                print("Hyper-V disattivato")
+                print()
+            else:
+                print()
+                print("Errore nell'output. Output completo:")
+                print(output.stdout)
 
         elif (scelta == 4):
             exit()
@@ -45,17 +47,17 @@ def main():
             print("Scelta non valida")
             print()
 
-def riavvio():
-    print("Per rendere effettive le modifiche bisogna riavviare il sistema. Riavviare adesso? [S/n]")
-    scelta = input()
-    if (scelta == "n"):
-        print()
-        return
-    else:
-        subprocess.run("shutdown /r /t 30")
-        print("Riavvio programmato tra 30 secondi")
-        print("Utilizzare 'shutdown /a' per annullare")
-        print()
+#def riavvio():
+#    print("Per rendere effettive le modifiche bisogna riavviare il sistema. Riavviare adesso? [S/n]")
+#    scelta = input()
+#    if (scelta == "n"):
+#        print()
+#        return
+#    else:
+#        subprocess.run("shutdown /r /t 30")
+#        print("Riavvio programmato tra 30 secondi")
+#        print("Utilizzare 'shutdown /a' per annullare")
+#        print()
 
 if __name__ == "__main__":
     main()

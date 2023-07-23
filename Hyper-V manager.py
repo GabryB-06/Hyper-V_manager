@@ -9,22 +9,22 @@ def main():
     print("3 - Stato attuale")
     print("4 - Chiusura")
     while(True):
-        scelta = int(input())
-        if (scelta == 1):
+        scelta = input()
+        if (scelta == "1"):
             #print()
             output = subprocess.run("bcdedit /set hypervisorlaunchtype off", capture_output=True, text=True) # Attivazione Hyper-V
             #print(output.stdout)
             output_pulito = output.stdout.replace("\n", "")
             print(output_pulito)
             #riavvio()
-        elif (scelta == 2):
+        elif (scelta == "2"):
             #print()
             output = subprocess.run("bcdedit /set hypervisorlaunchtype auto", capture_output=True, text=True) # Disattivazione Hyper-V
             #print(output.stdout)
             output_pulito = output.stdout.replace("\n", "")
             print(output_pulito)
             #riavvio()
-        elif (scelta == 3):
+        elif (scelta == "3"):
             output = subprocess.run("bcdedit /enum {current}", capture_output=True, text=True) # Stato attuale
             #print(output.stdout)
 
@@ -41,7 +41,7 @@ def main():
                 print("Errore nell'output. Output completo:")
                 print(output.stdout)
 
-        elif (scelta == 4):
+        elif (scelta == "4"):
             exit()
         else:
             #print()

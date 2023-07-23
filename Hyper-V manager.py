@@ -25,21 +25,22 @@ def main():
             print(output_pulito)
             #riavvio()
         elif (scelta == "3"):
-            output = subprocess.run("bcdedit /enum {current}", capture_output=True, text=True) # Stato attuale
-            #print(output.stdout)
-
-            if "hypervisorlaunchtype    Auto" in output.stdout:
-                #print()
-                print("Hyper-V attivo")
-                #print()
-            elif "hypervisorlaunchtype    Off" in output.stdout:
-                #print()
-                print("Hyper-V disattivato")
-                #print()
-            else:
-                #print()
-                print("Errore nell'output. Output completo:")
-                print(output.stdout)
+            stato()
+            #output = subprocess.run("bcdedit /enum {current}", capture_output=True, text=True) # Stato attuale
+            ##print(output.stdout)
+#
+            #if "hypervisorlaunchtype    Auto" in output.stdout:
+            #    #print()
+            #    print("Hyper-V attivo")
+            #    #print()
+            #elif "hypervisorlaunchtype    Off" in output.stdout:
+            #    #print()
+            #    print("Hyper-V disattivato")
+            #    #print()
+            #else:
+            #    #print()
+            #    print("Errore nell'output. Output completo:")
+            #    print(output.stdout)
 
         elif (scelta == "4"):
             exit()
@@ -48,6 +49,23 @@ def main():
             print("Scelta non valida")
             #print()
 
+def stato():
+    output = subprocess.run("bcdedit /enum {current}", capture_output=True, text=True) # Stato attuale
+    #print(output.stdout)
+
+    if "hypervisorlaunchtype    Auto" in output.stdout:
+        #print()
+        print("Hyper-V attivo")
+        #print()
+    elif "hypervisorlaunchtype    Off" in output.stdout:
+        #print()
+        print("Hyper-V disattivato")
+        #print()
+    else:
+        #print()
+        print("Errore nell'output. Output completo:")
+        print(output.stdout)
+                
 #def riavvio():
 #    print("Per rendere effettive le modifiche bisogna riavviare il sistema. Riavviare adesso? [S/n]")
 #    scelta = input()

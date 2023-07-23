@@ -25,14 +25,10 @@ def main():
 
             if "hypervisorlaunchtype    Auto" in output.stdout:
                 print()
-                #print("hypervisorlaunchtype    Auto")
-                #print("-------------------")
                 print("Hyper-V attivo")
                 print()
             elif "hypervisorlaunchtype    Off" in output.stdout:
                 print()
-                #print("hypervisorlaunchtype    Off")
-                #print("-------------------")
                 print("Hyper-V disattivato")
                 print()
             else:

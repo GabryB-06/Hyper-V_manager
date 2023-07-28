@@ -8,6 +8,8 @@ def main():
     print("2 - Attiva Hyper-V")
     print("3 - Stato attuale")
     print("4 - Chiusura")
+    print("="*40)
+    stato()
     while(True):
         scelta = input()
         if (scelta == "1"):
@@ -15,20 +17,24 @@ def main():
             output = subprocess.run("bcdedit /set hypervisorlaunchtype off", capture_output=True, text=True) # Attivazione Hyper-V
             #print(output.stdout)
             output_pulito = output.stdout.replace("\n", "")
+            print("="*40)
             print(output_pulito)
+            stato()
             #riavvio()
         elif (scelta == "2"):
             #print()
             output = subprocess.run("bcdedit /set hypervisorlaunchtype auto", capture_output=True, text=True) # Disattivazione Hyper-V
             #print(output.stdout)
             output_pulito = output.stdout.replace("\n", "")
+            print("="*40)
             print(output_pulito)
+            stato()
             #riavvio()
         elif (scelta == "3"):
+            print("="*40)
             stato()
             #output = subprocess.run("bcdedit /enum {current}", capture_output=True, text=True) # Stato attuale
             ##print(output.stdout)
-#
             #if "hypervisorlaunchtype    Auto" in output.stdout:
             #    #print()
             #    print("Hyper-V attivo")
@@ -52,19 +58,19 @@ def main():
 def stato():
     output = subprocess.run("bcdedit /enum {current}", capture_output=True, text=True) # Stato attuale
     #print(output.stdout)
-
     if "hypervisorlaunchtype    Auto" in output.stdout:
         #print()
-        print("Hyper-V attivo")
+        print("Stato attuale: Hyper-V attivo")
         #print()
     elif "hypervisorlaunchtype    Off" in output.stdout:
         #print()
-        print("Hyper-V disattivato")
+        print("Stato attuale: Hyper-V disattivato")
         #print()
     else:
         #print()
         print("Errore nell'output. Output completo:")
         print(output.stdout)
+    print("="*40)
                 
 #def riavvio():
 #    print("Per rendere effettive le modifiche bisogna riavviare il sistema. Riavviare adesso? [S/n]")

@@ -3,10 +3,7 @@ from pyuac import main_requires_admin
 
 @main_requires_admin
 def main():
-    print("1 - Disattiva Hyper-V")
-    print("2 - Attiva Hyper-V")
-    print("3 - Stato attuale")
-    print("4 - Chiusura")
+    comandi()
     print("="*40)
     stato()
     while(True):
@@ -28,10 +25,21 @@ def main():
         elif (scelta == "3"):
             print("="*40)
             stato()
-        elif (scelta == "4"):
+        elif(scelta == "4"):
+            print("="*40)
+            comandi()
+            print("="*40)
+        elif (scelta == "5"):
             exit()
         else:
             print("Scelta non valida")
+
+def comandi():
+    print("1 - Disattiva Hyper-V")
+    print("2 - Attiva Hyper-V")
+    print("3 - Stato attuale")
+    print("4 - Elenco comandi")
+    print("5 - Chiusura")
 
 def stato():
     output = subprocess.run("bcdedit /enum {current}", capture_output=True, text=True) # Stato attuale

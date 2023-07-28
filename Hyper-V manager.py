@@ -3,7 +3,6 @@ from pyuac import main_requires_admin
 
 @main_requires_admin
 def main():
-    #while(True):
     print("1 - Disattiva Hyper-V")
     print("2 - Attiva Hyper-V")
     print("3 - Stato attuale")
@@ -13,18 +12,14 @@ def main():
     while(True):
         scelta = input()
         if (scelta == "1"):
-            #print()
             output = subprocess.run("bcdedit /set hypervisorlaunchtype off", capture_output=True, text=True) # Attivazione Hyper-V
-            #print(output.stdout)
             output_pulito = output.stdout.replace("\n", "")
             print("="*40)
             print(output_pulito)
             stato()
             #riavvio()
         elif (scelta == "2"):
-            #print()
             output = subprocess.run("bcdedit /set hypervisorlaunchtype auto", capture_output=True, text=True) # Disattivazione Hyper-V
-            #print(output.stdout)
             output_pulito = output.stdout.replace("\n", "")
             print("="*40)
             print(output_pulito)
@@ -33,41 +28,18 @@ def main():
         elif (scelta == "3"):
             print("="*40)
             stato()
-            #output = subprocess.run("bcdedit /enum {current}", capture_output=True, text=True) # Stato attuale
-            ##print(output.stdout)
-            #if "hypervisorlaunchtype    Auto" in output.stdout:
-            #    #print()
-            #    print("Hyper-V attivo")
-            #    #print()
-            #elif "hypervisorlaunchtype    Off" in output.stdout:
-            #    #print()
-            #    print("Hyper-V disattivato")
-            #    #print()
-            #else:
-            #    #print()
-            #    print("Errore nell'output. Output completo:")
-            #    print(output.stdout)
-
         elif (scelta == "4"):
             exit()
         else:
-            #print()
             print("Scelta non valida")
-            #print()
 
 def stato():
     output = subprocess.run("bcdedit /enum {current}", capture_output=True, text=True) # Stato attuale
-    #print(output.stdout)
     if "hypervisorlaunchtype    Auto" in output.stdout:
-        #print()
         print("Stato attuale: Hyper-V attivo")
-        #print()
     elif "hypervisorlaunchtype    Off" in output.stdout:
-        #print()
         print("Stato attuale: Hyper-V disattivato")
-        #print()
     else:
-        #print()
         print("Errore nell'output. Output completo:")
         print(output.stdout)
     print("="*40)

@@ -14,14 +14,14 @@ def main():
             print("="*40)
             print(output_pulito)
             stato()
-            #riavvio()
+            riavvio()
         elif (scelta == "2"):
             output = subprocess.run("bcdedit /set hypervisorlaunchtype auto", capture_output=True, text=True) # Disattivazione Hyper-V
             output_pulito = output.stdout.replace("\n", "")
             print("="*40)
             print(output_pulito)
             stato()
-            #riavvio()
+            riavvio()
         elif (scelta == "3"):
             print("="*40)
             stato()
@@ -52,17 +52,16 @@ def stato():
         print(output.stdout)
     print("="*40)
                 
-#def riavvio():
-#    print("Per rendere effettive le modifiche bisogna riavviare il sistema. Riavviare adesso? [S/n]")
-#    scelta = input()
-#    if (scelta == "n"):
-#        #print()
-#        return
-#    else:
-#        subprocess.run("shutdown /r /t 30")
-#        print("Riavvio programmato tra 30 secondi")
-#        print("Utilizzare 'shutdown /a' per annullare")
-#        #print()
+def riavvio():
+    print("Per rendere effettive le modifiche bisogna riavviare il sistema. Riavviare adesso? [S/n]")
+    scelta = input()
+    if (scelta == "n" or scelta == "N"):
+        pass
+    else:
+        subprocess.run("shutdown /r /t 30")
+        print("Riavvio programmato tra 30 secondi")
+        print("Utilizzare 'shutdown /a' per annullare")
+    print("="*40)
 
 if __name__ == "__main__":
     main()

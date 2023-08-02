@@ -1,8 +1,12 @@
 import subprocess
 from pyuac import main_requires_admin
 
+tempo_riavvio = "30"
+riavvio_programmato = False
+
 @main_requires_admin
 def main():
+    global riavvio_programmato
     comandi()
     print("="*40)
     stato()
@@ -34,6 +38,15 @@ def main():
         #    print("="*40)
         elif (scelta == "4"):
             exit()
+        elif (scelta == "5"):
+            print("="*40)
+            if riavvio_programmato == True:
+                subprocess.run("shutdown /a")
+                print("Riavvio annullato")
+                riavvio_programmato = False
+            else:
+                print("Il riavvio non è stato pianificato")
+            print("="*40)
         else:
             #print("="*40)
             print("Scelta non valida")
@@ -47,6 +60,9 @@ def comandi():
     print("3 - Stato attuale")
     #print("4 - Elenco comandi")
     print("4 - Chiusura")
+    global riavvio_programmato
+    if riavvio_programmato == True:
+        print("5 - Annulla riavvio")
 
 def stato():
     output = subprocess.run("bcdedit /enum {current}", capture_output=True, text=True) # Stato attuale
@@ -60,14 +76,17 @@ def stato():
     print("="*40)
 
 def riavvio():
+    global tempo_riavvio
+    global riavvio_programmato
     print("Per rendere effettive le modifiche bisogna riavviare il sistema. Riavviare adesso? [S/n]")
     scelta = input()
     if (scelta == "n" or scelta == "N"):
         pass
     else:
-        subprocess.run("shutdown /r /t 30")
-        print("Riavvio programmato tra 30 secondi")
-        print("Utilizzare 'shutdown /a' per annullare")
+        riavvio_programmato = True
+        subprocess.run("shutdown /r /t " + tempo_riavvio)
+        print("Riavvio programmato tra " + tempo_riavvio + " secondi")
+        #print("Utilizzare 'shutdown /a' per annullare")
     print("="*40)
 
 if __name__ == "__main__":

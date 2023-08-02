@@ -15,6 +15,7 @@ def main():
             print(output_pulito)
             stato()
             riavvio()
+            #comandi()
         elif (scelta == "2"):
             output = subprocess.run("bcdedit /set hypervisorlaunchtype auto", capture_output=True, text=True) # Disattivazione Hyper-V
             output_pulito = output.stdout.replace("\n", "")
@@ -22,24 +23,30 @@ def main():
             print(output_pulito)
             stato()
             riavvio()
+            #comandi()
         elif (scelta == "3"):
             print("="*40)
             stato()
-        elif(scelta == "4"):
-            print("="*40)
-            comandi()
-            print("="*40)
-        elif (scelta == "5"):
+            #comandi()
+        #elif(scelta == "4"):
+        #    print("="*40)
+        #    comandi()
+        #    print("="*40)
+        elif (scelta == "4"):
             exit()
         else:
+            #print("="*40)
             print("Scelta non valida")
+            print("="*40)
+            #comandi()
+        comandi()
 
 def comandi():
     print("1 - Disattiva Hyper-V")
     print("2 - Attiva Hyper-V")
     print("3 - Stato attuale")
-    print("4 - Elenco comandi")
-    print("5 - Chiusura")
+    #print("4 - Elenco comandi")
+    print("4 - Chiusura")
 
 def stato():
     output = subprocess.run("bcdedit /enum {current}", capture_output=True, text=True) # Stato attuale
@@ -51,7 +58,7 @@ def stato():
         print("Errore nell'output. Output completo:")
         print(output.stdout)
     print("="*40)
-                
+
 def riavvio():
     print("Per rendere effettive le modifiche bisogna riavviare il sistema. Riavviare adesso? [S/n]")
     scelta = input()

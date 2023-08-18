@@ -19,7 +19,6 @@ def main():
             print(output_pulito)
             stato()
             riavvio()
-            #comandi()
         elif (scelta == "2"):
             output = subprocess.run("bcdedit /set hypervisorlaunchtype auto", capture_output=True, text=True) # Disattivazione Hyper-V
             output_pulito = output.stdout.replace("\n", "")
@@ -27,15 +26,9 @@ def main():
             print(output_pulito)
             stato()
             riavvio()
-            #comandi()
         elif (scelta == "3"):
             print("="*40)
             stato()
-            #comandi()
-        #elif(scelta == "4"):
-        #    print("="*40)
-        #    comandi()
-        #    print("="*40)
         elif (scelta == "4"):
             exit()
         elif (scelta == "5"):
@@ -48,17 +41,14 @@ def main():
                 print("Il riavvio non è stato pianificato")
             print("="*40)
         else:
-            #print("="*40)
             print("Scelta non valida")
             print("="*40)
-            #comandi()
         comandi()
 
 def comandi():
     print("1 - Disattiva Hyper-V")
     print("2 - Attiva Hyper-V")
     print("3 - Stato attuale")
-    #print("4 - Elenco comandi")
     print("4 - Chiusura")
     global riavvio_programmato
     if riavvio_programmato == True:

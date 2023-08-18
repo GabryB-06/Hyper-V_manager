@@ -78,15 +78,18 @@ def stato():
 def riavvio():
     global tempo_riavvio
     global riavvio_programmato
-    print("Per rendere effettive le modifiche bisogna riavviare il sistema. Riavviare adesso? [S/n]")
-    scelta = input()
-    if (scelta == "n" or scelta == "N"):
-        pass
-    else:
-        riavvio_programmato = True
-        subprocess.run("shutdown /r /t " + tempo_riavvio)
-        print("Riavvio programmato tra " + tempo_riavvio + " secondi")
-        #print("Utilizzare 'shutdown /a' per annullare")
+    print("Per rendere effettive le modifiche bisogna riavviare il sistema. Riavviare adesso? [S/N]")
+    while(True):
+        scelta = input()
+        if (scelta == "n" or scelta == "N"):
+            break
+        elif (scelta == "s" or scelta == "S"):
+            riavvio_programmato = True
+            subprocess.run("shutdown /r /t " + tempo_riavvio)
+            print("Riavvio programmato tra " + tempo_riavvio + " secondi")
+            break
+        else:
+            print("Sono accettati solo S e N")
     print("="*40)
 
 if __name__ == "__main__":

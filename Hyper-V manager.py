@@ -2,6 +2,8 @@ import subprocess
 from pyuac import main_requires_admin
 
 tempo_riavvio = "30"
+riavvio_req = True
+
 riavvio_programmato = False
 
 @main_requires_admin
@@ -66,21 +68,25 @@ def stato():
     print("="*40)
 
 def riavvio():
-    global tempo_riavvio
-    global riavvio_programmato
-    print("Per rendere effettive le modifiche bisogna riavviare il sistema. Riavviare adesso? [S/N]")
-    while(True):
-        scelta = input()
-        if (scelta == "n" or scelta == "N"):
-            break
-        elif (scelta == "s" or scelta == "S"):
-            riavvio_programmato = True
-            subprocess.run("shutdown /r /t " + tempo_riavvio)
-            print("Riavvio programmato tra " + tempo_riavvio + " secondi")
-            break
-        else:
-            print("Sono accettati solo S e N")
-    print("="*40)
+    global riavvio_req
+    if riavvio_req == True:
+        global tempo_riavvio
+        global riavvio_programmato
+        print("Per rendere effettive le modifiche bisogna riavviare il sistema. Riavviare adesso? [S/N]")
+        while(True):
+            scelta = input()
+            if (scelta == "n" or scelta == "N"):
+                break
+            elif (scelta == "s" or scelta == "S"):
+                riavvio_programmato = True
+                subprocess.run("shutdown /r /t " + tempo_riavvio)
+                print("Riavvio programmato tra " + tempo_riavvio + " secondi")
+                break
+            else:
+                print("Sono accettati solo S e N")
+        print("="*40)
+    else:
+        return
 
 if __name__ == "__main__":
     main()

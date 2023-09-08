@@ -1,8 +1,19 @@
 import subprocess
 from pyuac import main_requires_admin
+import json
 
-tempo_riavvio = "30"
-riavvio_req = True
+try:
+    with open('config.json', 'r') as config_file:
+        config_data = json.load(config_file)
+except FileNotFoundError:
+    print("Il file di configurazione non esiste.")
+    exit()
+except json.JSONDecodeError:
+    print("Errore nel parsing del file JSON.")
+    exit()
+
+tempo_riavvio = str(config_data["tempo_riavvio"])
+riavvio_req = config_data["riavvio_req"]
 
 riavvio_programmato = False
 

@@ -1,15 +1,22 @@
 import subprocess
 from pyuac import main_requires_admin
 import json
+import time
+import os
+
+__location__ = os.path.realpath(
+    os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 try:
-    with open('config.json', 'r') as config_file:
+    with open(__location__+'/config.json', 'r') as config_file:
         config_data = json.load(config_file)
 except FileNotFoundError:
     print("Il file di configurazione non esiste.")
+    time.sleep(5)
     exit()
 except json.JSONDecodeError:
     print("Errore nel parsing del file JSON.")
+    time.sleep(5)
     exit()
 
 tempo_riavvio = str(config_data["tempo_riavvio"])

@@ -1,4 +1,4 @@
 {
     "tempo_riavvio": 30,
-    "riavvio_req": true
+    "riavvio_req": false
 }

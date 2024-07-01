@@ -1,4 +1,4 @@
 {
-    "tempo_riavvio": 30,
-    "riavvio_req": false
+    "time_before_reboot": 30,
+    "reboot_requested": false
 }

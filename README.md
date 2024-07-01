@@ -9,12 +9,12 @@ Useful script as a workaround for various compatibility issues between Hyper-V a
 
 ## Configuration
 
-Optionally configure the `riavvio_req` and `tempo_riavvio` parameters in the `config.json` file
+Optionally configure the `reboot_requested` and `time_before_reboot` parameters in the `config.json` file
 
-- `riavvio_req` sets whether to perform a reboot
+- `reboot_requested` sets whether to perform a reboot
 
 > values: `true`/`false`
 
-- `tempo_riavvio` sets the time after which to perform the reboot
+- `time_before_reboot` sets the time after which to perform the reboot
 
 > values: time in seconds

@@ -1,20 +1,20 @@
-# Hyper-V manager
+# Hyper-V Manager
 
-Tool per la gestione dello stato di attivazione di Microsoft Hyper-V \
-Script utile come workaround per i vari problemi di compatibilità tra Hyper-V e VirtualBox/VMware
+Tool for managing the activation status of Microsoft Hyper-V \
+Useful script as a workaround for various compatibility issues between Hyper-V and VirtualBox/VMware
 
-## Installazione dipendenze
+## Install Dependencies
 
 `pip install -r requirements.txt`
 
-## Configurazione
+## Configuration
 
-Eventualmente configurare nel file `config.json` i parametri `riavvio_req` e `tempo_riavvio` \
+Optionally configure the `riavvio_req` and `tempo_riavvio` parameters in the `config.json` file
 
-- `riavvio_req` imposta se eseguire il riavvio
+- `riavvio_req` sets whether to perform a reboot
 
-> valori: `true`/`false`
+> values: `true`/`false`
 
-- `tempo_riavvio` imposta il tempo dopo cui eseguire il riavvio
+- `tempo_riavvio` sets the time after which to perform the reboot
 
-> valori: tempo in secondi
+> values: time in seconds

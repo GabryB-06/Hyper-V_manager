@@ -22,11 +22,11 @@ except json.JSONDecodeError:
 time_before_reboot = str(config_data["time_before_reboot"])
 reboot_requested = config_data["reboot_requested"]
 
-riavvio_programmato = False
+planned_reboot = False
 
 @main_requires_admin
 def main():
-    global riavvio_programmato
+    global planned_reboot
     commands()
     print("="*40)
     status()
@@ -53,10 +53,10 @@ def main():
             exit()
         elif (choice == "5"):
             print("="*40)
-            if riavvio_programmato == True:
+            if planned_reboot == True:
                 subprocess.run("shutdown /a")
                 print("Restart cancelled")
-                riavvio_programmato = False
+                planned_reboot = False
             else:
                 print("No restart is scheduled")
             print("="*40)
@@ -70,8 +70,8 @@ def commands():
     print("2 - Enable Hyper-V")
     print("3 - Current status")
     print("4 - Exit")
-    global riavvio_programmato
-    if riavvio_programmato == True:
+    global planned_reboot
+    if planned_reboot == True:
         print("5 - Cancel restart")
 
 def status():
@@ -89,14 +89,14 @@ def schedule_restart():
     global reboot_requested
     if reboot_requested == True:
         global time_before_reboot
-        global riavvio_programmato
+        global planned_reboot
         print("Changes require a system reboot to take effect. Reboot now? [Y/N]")
         while(True):
             choice = input()
             if (choice.lower() == "n"):
                 break
             elif (choice.lower() == "y"):
-                riavvio_programmato = True
+                planned_reboot = True
                 subprocess.run("shutdown /r /t " + time_before_reboot)
                 print("Reboot scheduled in " + time_before_reboot + " seconds")
                 break

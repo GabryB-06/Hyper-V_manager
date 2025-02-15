@@ -1,1 +1,2 @@
 pyuac
+pywin32

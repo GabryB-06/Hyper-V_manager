@@ -1,20 +1,30 @@
 # Hyper-V manager
 
-Tool per la gestione dello stato di attivazione di Microsoft Hyper-V \
-Script utile come workaround per i vari problemi di compatibilità tra Hyper-V e VirtualBox/VMware
+- ## Python
+    Tool per la gestione dello stato di attivazione di Microsoft Hyper-V \
+    Script utile come workaround per i vari problemi di compatibilità tra Hyper-V e VirtualBox/VMware
 
-## Installazione dipendenze
+    ### Installazione dipendenze
 
-`pip install -r requirements.txt`
+    `pip install -r requirements.txt`
 
-## Configurazione
+    ### Configurazione
 
-Eventualmente configurare nel file `config.json` i parametri `riavvio_req` e `tempo_riavvio` \
+    Eventualmente configurare nel file `config.json` i parametri `riavvio_req` e `tempo_riavvio` \
 
-- `riavvio_req` imposta se eseguire il riavvio
+  - `riavvio_req` imposta se eseguire il riavvio
 
-> valori: `true`/`false`
+    > valori: `true`/`false`
 
-- `tempo_riavvio` imposta il tempo dopo cui eseguire il riavvio
+  - `tempo_riavvio` imposta il tempo dopo cui eseguire il riavvio
 
-> valori: tempo in secondi
+    > valori: tempo in secondi
+
+
+- ## Powershell
+  
+  1. Eseguire Powershell come amministratore
+  2. Spostati nella cartella dove si trova il file <b>Manager.ps1</b>
+  3. Esegui il comando `Set-ExecutionPolicy Unrestricted -Scope Process`
+  4. Premere "s" (Sì)
+  5. Esegui il comando `.\Manager.ps1`

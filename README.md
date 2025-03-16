@@ -28,3 +28,5 @@
   3. Esegui il comando `Set-ExecutionPolicy Unrestricted -Scope Process`
   4. Premere "s" (Sì)
   5. Esegui il comando `.\Manager.ps1`
+ 
+    - In alternativa è possibile fare click destro e selezionare "Esegui con powershell" dopodichè fornire i privilegi amministratore
